@@ -22,7 +22,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 // Enhanced FloatingNav Component
 function FloatingNav() {
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('#home')
+  const [activeSection, setActiveSection] = useState('#home') // Fixed: Default to #home
   const [scrolled, setScrolled] = useState(false)
 
   const navItems = [
@@ -38,32 +38,84 @@ function FloatingNav() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
       
-      // Update active section based on scroll position
-      const sections = ['home', 'about', 'services', 'skills', 'projects', 'experience', 'testimonials', 'contact']
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section)
+      // Fixed: Better section detection logic
+      const sections = [
+        { id: 'hero', href: '#home' },
+        { id: 'services', href: '#services' },
+        { id: 'about', href: '#about' },
+        { id: 'skills', href: '#skills' },
+        { id: 'projects', href: '#projects' },
+        { id: 'testimonials', href: '#testimonials' },
+        { id: 'experience', href: '#experience' },
+        { id: 'contact', href: '#contact' }
+      ]
+      
+      let currentSection = '#home' // Default to home
+      
+      for (const section of sections) {
+        const element = document.getElementById(section.id)
         if (element) {
           const rect = element.getBoundingClientRect()
-          return rect.top <= 150 && rect.bottom >= 150
+          // Check if section is in viewport (with some offset for better UX)
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            currentSection = section.href
+            break
+          }
         }
-        return false
-      })
-      
-      if (currentSection) {
-        setActiveSection(`#${currentSection}`)
       }
+      
+      setActiveSection(currentSection)
     }
 
+    // Set initial state
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleNavClick = (href: string) => {
     setIsOpen(false)
-    const targetId = href === '#home' ? 'hero' : href.substring(1)
+    // Fixed: Better navigation logic
+    let targetId = ''
+    
+    switch(href) {
+      case '#home':
+        targetId = 'hero'
+        break
+      case '#services':
+        targetId = 'services'
+        break
+      case '#about':
+        targetId = 'about'
+        break
+      case '#skills':
+        targetId = 'skills'
+        break
+      case '#projects':
+        targetId = 'projects'
+        break
+      case '#contact':
+        targetId = 'contact'
+        break
+      default:
+        targetId = 'hero'
+    }
+    
     const element = document.getElementById(targetId)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      // Fixed: Better scroll behavior with offset for mobile header
+      const isMobile = window.innerWidth < 768
+      const offset = isMobile ? 80 : 100
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = elementPosition - offset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+      
+      // Update active section immediately for better UX
+      setActiveSection(href)
     }
   }
 
@@ -116,7 +168,7 @@ function FloatingNav() {
           <div className="flex items-center justify-between px-4 py-4">
             {/* Logo */}
             <Link 
-              href="/" 
+              href="#home"
               className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500"
               onClick={() => handleNavClick('#home')}
             >
@@ -126,13 +178,13 @@ function FloatingNav() {
             {/* Current Section Indicator */}
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/50 border border-slate-700/50">
               {(() => {
-                const activeItem = navItems.find(item => item.href === activeSection)
-                const IconComponent = activeItem?.icon || Home
+                const activeItem = navItems.find(item => item.href === activeSection) || navItems[0] // Fallback to first item
+                const IconComponent = activeItem.icon
                 return (
                   <>
                     <IconComponent className="h-4 w-4 text-cyan-400" />
                     <span className="text-sm text-slate-300 font-medium">
-                      {activeItem?.label || 'Home'}
+                      {activeItem.label}
                     </span>
                   </>
                 )
@@ -376,11 +428,11 @@ export default function Portfolio() {
       rating: 5
     }
   ]
-
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-zinc-900 text-white overflow-hidden">
       
-      <MouseFollower />
+      {!isMobile && <MouseFollower />}
       <ScrollProgress />
       <FloatingNav />
 
@@ -918,7 +970,7 @@ export default function Portfolio() {
       <footer className="border-t border-slate-800/50 py-16 bg-slate-900/20 backdrop-blur-sm mb-16 md:mb-0">
         <div className="container px-4 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
-            <Link href="/" className="font-bold text-2xl">
+            <Link href="#home" className="font-bold text-2xl">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
                 Sadik
               </span>

@@ -372,9 +372,9 @@ export default function Portfolio() {
   }
 
   const stats = [
-    { label: "Years Experience", value: "3+" },
-    { label: "Projects Completed", value: "50+" },
-    { label: "Happy Clients", value: "25+" },
+    { label: "Years Experience", value: "1+" },
+    { label: "Projects Completed", value: "12+" },
+    // { label: "Happy Clients", value: "25+" },
     { label: "Code Commits", value: "2000+" }
   ]
 
@@ -399,35 +399,35 @@ export default function Portfolio() {
     },
     {
       icon: Palette,
-      title: "UI/UX Design",
+      title: "App Development ",
       description: "Designing intuitive user interfaces and experiences that delight users and drive engagement.",
-      skills: ["Figma", "Adobe XD", "Prototyping", "User Research"],
+      skills: ["Flutter", "React-Native", "Android Studio"],
       gradient: "from-purple-500/10 via-violet-500/10 to-fuchsia-500/10",
       iconColor: "text-purple-400",
       borderColor: "hover:border-purple-500/30"
     }
   ]
 
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Product Manager at TechCorp",
-      content: "Sadik delivered exceptional work on our e-commerce platform. His attention to detail and technical expertise made the project a huge success.",
-      rating: 5
-    },
-    {
-      name: "Mike Chen", 
-      role: "CTO at StartupXYZ",
-      content: "Working with Sadik was fantastic. He brought fresh ideas and implemented them flawlessly. Highly recommended!",
-      rating: 5
-    },
-    {
-      name: "Emily Davis",
-      role: "Design Lead at CreativeStudio", 
-      content: "Sadik's ability to translate design concepts into pixel-perfect code is remarkable. A true professional.",
-      rating: 5
-    }
-  ]
+  // const testimonials = [
+  //   {
+  //     name: "Sarah Johnson",
+  //     role: "Product Manager at TechCorp",
+  //     content: "Sadik delivered exceptional work on our e-commerce platform. His attention to detail and technical expertise made the project a huge success.",
+  //     rating: 5
+  //   },
+  //   {
+  //     name: "Mike Chen", 
+  //     role: "CTO at StartupXYZ",
+  //     content: "Working with Sadik was fantastic. He brought fresh ideas and implemented them flawlessly. Highly recommended!",
+  //     rating: 5
+  //   },
+  //   {
+  //     name: "Emily Davis",
+  //     role: "Design Lead at CreativeStudio", 
+  //     content: "Sadik's ability to translate design concepts into pixel-perfect code is remarkable. A true professional.",
+  //     rating: 5
+  //   }
+  // ]
 const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-zinc-900 text-white overflow-hidden">
@@ -593,48 +593,7 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-16 md:py-32 relative">
-        <div className="container relative z-10 px-4">
-          <SectionHeading title="What I Do" subtitle="Services I provide to bring your vision to life" />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
-            {services.map((service, index) => (
-              <Card 
-                key={index} 
-                className={`backdrop-blur-sm border border-slate-700/50 bg-slate-800/30 ${service.borderColor} transition-all duration-500 group hover:shadow-xl hover:shadow-slate-900/20 hover:scale-[1.02] hover:-translate-y-1`}
-              >
-                <CardHeader>
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${service.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-inner`}>
-                    <service.icon className={`h-7 w-7 ${service.iconColor} group-hover:scale-110 transition-transform duration-300`} />
-                  </div>
-                  <CardTitle className="text-xl text-slate-100 group-hover:text-white transition-colors">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-slate-400 mb-6 leading-relaxed group-hover:text-slate-300 transition-colors">
-                    {service.description}
-                  </CardDescription>
-                  <div className="flex flex-wrap gap-2">
-                    {service.skills.map((skill, skillIndex) => (
-                      <Badge 
-                        key={skillIndex} 
-                        variant="outline" 
-                        className="text-xs border-slate-600/50 bg-slate-700/30 text-slate-300 hover:border-slate-500/50 hover:bg-slate-600/30 transition-all duration-200"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
+       {/* About Section */}
       <section id="about" className="py-16 md:py-32 relative">
         <div className="container relative z-10 px-4">
           <SectionHeading title="About Me" subtitle="Get to know the person behind the code" />
@@ -644,7 +603,7 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
               <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl">
                 <img
-                  src="/placeholder.svg?height=600&width=600"
+                  src="https://my-portfolio-25-blond.vercel.app/static/media/sadik.35bbde45e508dad090fc.jpg"
                   alt="Md Sadik"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -677,7 +636,7 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
               <TabsContent value="bio" className="space-y-4">
                 <div className="p-8 rounded-2xl backdrop-blur-md border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/40 transition-colors duration-300">
                   <p className="text-lg text-slate-300 leading-relaxed mb-4">
-                    I'm a passionate software engineer with <span className="text-cyan-400 font-semibold">3+ years</span> of experience building web applications and digital products. I specialize in frontend development with React and Next.js, but I'm also comfortable working with backend technologies.
+                    I'm a passionate software engineer with <span className="text-cyan-400 font-semibold">1+ years</span> of experience building web applications and mobile applications. I specialize in frontend development with React and Next.js, and I'm also skilled in mobile app development using Flutter and React Native
                   </p>
                   <p className="text-lg text-slate-300 leading-relaxed">
                     My journey in tech started during my computer science studies, where I discovered my love for creating digital solutions that solve <span className="text-emerald-400 font-medium">real-world problems</span> and make people's lives easier.
@@ -731,18 +690,64 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
         </div>
       </section>
 
+
+      {/* Services Section */}
+      <section id="services" className="py-16 md:py-32 relative">
+        <div className="container relative z-10 px-4">
+          <SectionHeading title="What I Do" subtitle="Services I provide to bring your vision to life" />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+            {services.map((service, index) => (
+              <Card 
+                key={index} 
+                className={`backdrop-blur-sm border border-slate-700/50 bg-slate-800/30 ${service.borderColor} transition-all duration-500 group hover:shadow-xl hover:shadow-slate-900/20 hover:scale-[1.02] hover:-translate-y-1`}
+              >
+                <CardHeader>
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-r ${service.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-inner`}>
+                    <service.icon className={`h-7 w-7 ${service.iconColor} group-hover:scale-110 transition-transform duration-300`} />
+                  </div>
+                  <CardTitle className="text-xl text-slate-100 group-hover:text-white transition-colors">
+                    {service.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-slate-400 mb-6 leading-relaxed group-hover:text-slate-300 transition-colors">
+                    {service.description}
+                  </CardDescription>
+                  <div className="flex flex-wrap gap-2">
+                    {service.skills.map((skill, skillIndex) => (
+                      <Badge 
+                        key={skillIndex} 
+                        variant="outline" 
+                        className="text-xs border-slate-600/50 bg-slate-700/30 text-slate-300 hover:border-slate-500/50 hover:bg-slate-600/30 transition-all duration-200"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+     
       {/* Skills Section */}
       <section id="skills" className="py-16 md:py-32 relative">
         <div className="container relative z-10 px-4">
           <SectionHeading title="My Skills" subtitle="Technologies and tools I use to create amazing experiences" />
 
           <Tabs defaultValue="frontend" className="mt-20">
-            <TabsList className="grid w-full grid-cols-3 bg-slate-800/50 border border-slate-700/50 backdrop-blur-sm mb-12 max-w-md mx-auto">
+            <TabsList className="grid w-full grid-cols-4 bg-slate-800/50 border border-slate-700/50 backdrop-blur-sm mb-12 max-w-md mx-auto">
               <TabsTrigger value="frontend" className="data-[state=active]:bg-slate-700/50 data-[state=active]:text-cyan-400">
                 Frontend
               </TabsTrigger>
               <TabsTrigger value="backend" className="data-[state=active]:bg-slate-700/50 data-[state=active]:text-cyan-400">
                 Backend
+              </TabsTrigger>
+              <TabsTrigger value="app" className="data-[state=active]:bg-slate-700/50 data-[state=active]:text-cyan-400">
+                App
               </TabsTrigger>
               <TabsTrigger value="tools" className="data-[state=active]:bg-slate-700/50 data-[state=active]:text-cyan-400">
                 Tools
@@ -809,10 +814,39 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
               </div>
             </TabsContent>
 
+               <TabsContent value="app" className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {[
+                  { name: "Flutter", level: 85, gradient: "from-red-500 to-red-500" },
+                  { name: "React-Native", level: 70, gradient: "from-blue-500 to-cyan-500" },
+                  { name: "Android Studio", level: 70, gradient: "from-green-600 to-green-400" },
+                  { name: "Firebase", level: 75, gradient: "from-pink-500 to-rose-500" },
+                  
+                ].map((skill, index) => (
+                  <div key={index} className="space-y-3 p-6 rounded-xl bg-slate-800/30 border border-slate-700/50 hover:bg-slate-800/40 transition-all duration-300 group">
+                    <div className="flex justify-between items-center">
+                      <span className="font-semibold text-slate-200 group-hover:text-white transition-colors">
+                        {skill.name}
+                      </span>
+                      <span className="text-sm text-slate-400 bg-slate-700/50 px-2 py-1 rounded font-medium">
+                        {skill.level}%
+                      </span>
+                    </div>
+                    <div className="w-full bg-slate-700/50 rounded-full h-2 overflow-hidden">
+                      <div 
+                        className={`bg-gradient-to-r ${skill.gradient} h-2 rounded-full transition-all duration-1000 shadow-sm`}
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </TabsContent>
+
             <TabsContent value="tools" className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {[
-                  { name: "Git", level: 90, gradient: "from-red-500 to-red-600" },
+                  { name: "Git/Github", level: 90, gradient: "from-red-500 to-red-600" },
                   { name: "Figma", level: 80, gradient: "from-purple-500 to-violet-500" },
                   { name: "VS Code", level: 95, gradient: "from-blue-500 to-blue-600" },
                   { name: "Webpack", level: 70, gradient: "from-blue-400 to-cyan-500" },
@@ -876,40 +910,7 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-16 md:py-32 relative">
-        <div className="container relative z-10 px-4">
-          <SectionHeading title="What Clients Say" subtitle="Testimonials from people I've worked with" />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
-            {testimonials.map((testimonial, index) => (
-              <Card 
-                key={index} 
-                className="backdrop-blur-sm border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/40 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] group"
-              >
-                <CardHeader>
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <span key={i} className="text-yellow-400 text-lg group-hover:scale-110 transition-transform" style={{ transitionDelay: `${i * 100}ms` }}>
-                        ★
-                      </span>
-                    ))}
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-300 mb-6 leading-relaxed group-hover:text-slate-200 transition-colors">
-                    "{testimonial.content}"
-                  </p>
-                  <div className="border-t border-slate-700/50 pt-4">
-                    <div className="font-semibold text-slate-200">{testimonial.name}</div>
-                    <div className="text-sm text-slate-400">{testimonial.role}</div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* Experience Section */}
       <section id="experience" className="py-16 md:py-32 relative">

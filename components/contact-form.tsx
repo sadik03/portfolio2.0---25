@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Send } from "lucide-react"
@@ -19,16 +18,53 @@ export function ContactForm() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    const formData = new FormData(e.currentTarget)
+    
+    // Debug: Log form data
+    console.log("Form data being sent:")
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value)
+    }
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
 
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    })
+      console.log("Response status:", response.status)
+      console.log("Response ok:", response.ok)
 
-    setIsSubmitting(false)
-    e.currentTarget.reset()
+      const data = await response.json()
+      console.log("Response data:", data)
+
+      if (data.success) {
+        toast({
+          title: "Message sent successfully!",
+          description: `Form submitted with ID: ${data.id || 'Unknown'}. Check your email inbox and spam folder.`,
+        })
+        e.currentTarget.reset()
+      } else {
+        console.error("W3Forms error:", data)
+        toast({
+          title: "Submission failed",
+          description: data.message || "Unknown error occurred",
+          variant: "destructive"
+        })
+      }
+    } catch (error) {
+      console.error("Network/Parse error:", error)
+      toast({
+        title: "Network Error",
+        description: "Could not connect to the server. Check your internet connection.",
+        variant: "destructive"
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -45,8 +81,27 @@ export function ContactForm() {
           <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* W3Forms access key */}
+            <input type="hidden" name="access_key" value="6c3ecf6b-a554-42c3-b922-94df1eead3b8" />
+            
+            {/* Ensure we handle response in JS */}
+            <input type="hidden" name="redirect" value="false" />
+            
+            {/* Add subject prefix for better email organization */}
+            <input type="hidden" name="subject" value="New Portfolio Contact Form Submission" />
+            
+            {/* Honeypot field for spam protection */}
+            <input 
+              type="text" 
+              name="botcheck" 
+              style={{ display: 'none' }}
+              tabIndex={-1} 
+              autoComplete="off"
+            />
+
             <div className="space-y-2">
               <Input
+                name="name"
                 placeholder="Your Name"
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
@@ -55,6 +110,7 @@ export function ContactForm() {
             <div className="space-y-2">
               <Input
                 type="email"
+                name="email"
                 placeholder="Your Email"
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
@@ -62,6 +118,7 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <Input
+                name="user_subject"
                 placeholder="Subject"
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
@@ -69,12 +126,14 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <Textarea
+                name="message"
                 placeholder="Your Message"
                 rows={5}
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
               />
             </div>
+
             <Button
               type="submit"
               className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"

@@ -497,11 +497,11 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
         </div>
 
         <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-4">
-          <div className="space-y-8">
+          <div className="space-y-8 ">
             <div className="inline-block">
               <Badge 
                 variant="outline" 
-                className="px-4 py-2 text-sm font-medium mb-4 backdrop-blur-sm border-slate-600/50 bg-slate-800/50 text-slate-200 hover:border-cyan-500/50 hover:bg-slate-700/50 transition-all duration-300"
+                className="px-4 py-2 text-sm font-medium mb-4 mt-2 backdrop-blur-sm border-slate-600/50 bg-slate-800/50 text-slate-200 hover:border-cyan-500/50 hover:bg-slate-700/50 transition-all duration-300"
               >
                 <span className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
@@ -603,7 +603,7 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
               <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl">
                 <img
-                  src="https://my-portfolio-25-blond.vercel.app/static/media/sadik.35bbde45e508dad090fc.jpg"
+                  src="https://qglnorzqt2a4vqss.public.blob.vercel-storage.com/sadik.jpg"
                   alt="Md Sadik"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -886,23 +886,50 @@ const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
               title="E-commerce Platform"
               description="A full-stack e-commerce platform built with Next.js, Stripe, and Prisma."
               tags={["Next.js", "TypeScript", "Prisma", "Stripe"]}
-              image="/placeholder.svg?height=400&width=600"
-              demoUrl="https://example.com"
-              repoUrl="https://github.com"
+              image="https://qglnorzqt2a4vqss.public.blob.vercel-storage.com/ecom.png"
+              demoUrl="https://e-commerce-25.vercel.app/"
+              repoUrl="https://github.com/sadik03/E-commerce-25"
             />
             <ProjectCard
-              title="Task Management App"
-              description="A collaborative task management application with real-time updates."
+              title="Travel website"
+              description="A dubai-based travel website with booking and itinerary management."
               tags={["React", "Firebase", "Tailwind CSS", "Redux"]}
-              image="/placeholder.svg?height=400&width=600"
+              image="https://qglnorzqt2a4vqss.public.blob.vercel-storage.com/waho.png"
+              demoUrl="https://wahawonders.com/"
+              repoUrl=""
+            />
+            <ProjectCard
+              title="Construction Management"
+              description="An construction management web application for project tracking and collaboration."
+              tags={["react", "Html/Css", "Web3form", ]}
+              image="https://qglnorzqt2a4vqss.public.blob.vercel-storage.com/elitech.png"
+              demoUrl="https://www.elitechdesigns.com/"
+              repoUrl="https://github.com/sadik03/ElitechDesigns-25"
+            />
+
+            <ProjectCard
+              title="Construction Management web"
+              description="An construction management web application for project tracking and collaboration."
+              tags={["react", "Html/Css", "Web3form", ]}
+              image=""
+              demoUrl=""
+              repoUrl="https://github.com"
+            />
+
+            <ProjectCard
+              title="Construction Management web"
+              description="An construction management web application for project tracking and collaboration."
+              tags={["react", "Html/Css", "Web3form", ]}
+              image=""
               demoUrl="https://example.com"
               repoUrl="https://github.com"
             />
+
             <ProjectCard
-              title="AI Content Generator"
-              description="An AI-powered content generation tool using OpenAI's GPT models."
-              tags={["Next.js", "OpenAI API", "Node.js", "MongoDB"]}
-              image="/placeholder.svg?height=400&width=600"
+              title="Construction Management web"
+              description="An construction management web application for project tracking and collaboration."
+              tags={["react", "Html/Css", "Web3form", ]}
+              image=""
               demoUrl="https://example.com"
               repoUrl="https://github.com"
             />
